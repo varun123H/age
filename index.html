@@ -16,12 +16,16 @@
           Details:
         </div>
         <div class="card-body">
+      
     <h4>Name:</h4>
     <input type ="text" id="name" required="required"><br>
     <br>
+    <h4>City:</h4>
+      <input type="text" id="city" required="required"><br>
+      <br>
        <h4>Birthday:</h4>
        <input  type="date" id="date" required="required"><br><br>
-        <button type="button" onclick="wri();">Submit</button>
+        <button id="btrn" type="button" onclick="wri();">Submit</button>
         <hr>
     <a href="age\modernmonk.html" class="btn btn-primary">Get details</a>
   </div>
@@ -36,6 +40,7 @@
 <script>
     function wri() {
      var name = document.getElementById("name").value;
+     var city = document.getElementById("city").value;
      var DOB = document.getElementById("date").value;
      var millisecondsBetweenDOBAnd1900 = Date.parse(DOB);
      var millisecondsBetweenNowAnd1900 = Date.now();
@@ -53,13 +58,14 @@
    var months = years*12;
    var days = years*365;
  
-      if(DOB=='' || name==''){
+      if(DOB=='' || name=='' || city==''){
           alert('required');
           return false;
       }
       else{
          firebase.database().ref('user/'+name).set({
             userName: name,
+            userCity: city,
              userYear: years,
              userMonth: months,
              userDay: days
@@ -67,7 +73,10 @@
          });
          swal("Data saved","Successfully");
           return true;
+      
       }
+      
+    
  
       firebase.database().ref('user/'+name).set({
         userName: name,   
@@ -80,6 +89,7 @@
  
  
  }
+ 
  </script>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->

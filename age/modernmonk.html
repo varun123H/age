@@ -23,6 +23,7 @@
     <button type="button" onclick="get();">Click to get age details</button>
     <hr>
     <p>Name: <strong id="name"></strong></p>
+    <p>City: <strong id="city"></strong></p>
     <p>Age in years : <strong id="year"></strong></p>
     <p>Age in months : <strong id="month"></strong></p>
     <p>Age in days : <strong id="day"></strong></p>
@@ -39,11 +40,13 @@
         var user = document.getElementById("user").value;
         firebase.database().ref('user/'+user).once('value').then(function(snapshot){
           var name= snapshot.val().userName;
+          var city= snapshot.val().userCity;
           var year= snapshot.val().userYear;
           var month= snapshot.val().userMonth;
           var day= snapshot.val().userDay;
       
           document.getElementById("name").innerHTML=name;
+          document.getElementById("city").innerHTML=city;
           document.getElementById("year").innerHTML=year;
           document.getElementById("month").innerHTML=month;
           document.getElementById("day").innerHTML=day;
