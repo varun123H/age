@@ -10,14 +10,12 @@
 
     <title>Age details</title>
   </head>
-  <body>
-    <div class="card">
-  <div class="card-header">
-    Users:
-  </div>
+  <body style="background-color: black;">
+    <div style="background-color: rgb(226, 219, 210);" class="card">
+  
   <div class="card-body">
-     <p id="par"></p>
-    <hr>
+     
+    
     <h2>Enter the user name :</h2>
      <input type="text" id="user" required="required"><br><br>
     <button type="button" onclick="get();">Click to get age details</button>
@@ -28,6 +26,13 @@
     <p>Age in months : <strong id="month"></strong></p>
     <p>Age in days : <strong id="day"></strong></p>
   </div>
+  <hr>
+  <div class="card-header">
+    Users:
+  </div>
+  
+  <p style="margin-left: 20px;" id="par"></p>
+
 </div>
 
     <!-- Optional JavaScript -->
@@ -54,6 +59,8 @@
 
 
       }
+
+    
         
     </script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
