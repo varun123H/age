@@ -33,7 +33,10 @@
     <h4>City:</h4>
       <input type="text" id="city" required="required"><br>
       <br>
-       <h4>Birthday:</h4>
+      <h4>Weight(in Kg.):</h4>
+      <input type="number" id="weight" required="required"><br>
+      <br>
+       <h4>Membership Date:</h4>
        <input  type="date" id="date" required="required"><br><br>
         <button id="btrn" type="button" onclick="wri();">Submit</button>
         <hr>
@@ -58,8 +61,9 @@
     function wri() {
      var name = document.getElementById("name").value;
      var city = document.getElementById("city").value;
-     var DOB = document.getElementById("date").value;
-     var millisecondsBetweenDOBAnd1900 = Date.parse(DOB);
+     var weight = document.getElementById("weight").value;
+     var MOB = document.getElementById("date").value;
+     var millisecondsBetweenDOBAnd1900 = Date.parse(MOB);
      var millisecondsBetweenNowAnd1900 = Date.now();
      var ageInMilliseconds = millisecondsBetweenNowAnd1900-millisecondsBetweenDOBAnd1900;
       
@@ -75,7 +79,7 @@
    var months = years*12;
    var days = years*365;
  
-      if(DOB=='' || name=='' || city==''){
+      if(MOB=='' || name=='' || city=='' || weight==''){
           alert('required');
           return false;
       }
@@ -83,6 +87,7 @@
          firebase.database().ref('user/'+name).set({
             userName: name,
             userCity: city,
+            userWeight: weight,
              userYear: years,
              userMonth: months,
              userDay: days
@@ -92,20 +97,8 @@
           return true;
       
       }
-      
-    
  
-      firebase.database().ref('user/'+name).set({
-        userName: name,   
-        userYear: years,
-        userMonth: months,
-        userDay: days
-       
-    });
-     
- 
- 
- }
+}
  
  </script>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
